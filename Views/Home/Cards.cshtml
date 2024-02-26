@@ -1,0 +1,24 @@
+﻿@model DeckOfCards
+
+@{
+    foreach (Card c in Model.Cards)
+    {
+        <hr />
+        <h4>@c.Value</h4>
+        <img src=@c.Image width="200px"/>
+    }
+    <hr/>
+    <h4>Remaining in deck: @Model.Remaining cards</h4>
+    if (Model.Remaining >= 5)
+    {
+        <form asp-action="Cards">
+            <button type="submit" style="padding:10px;background-color:azure">Draw five more cards</button>
+        </form>
+    }
+    else
+    {
+        <form asp-action="Replay">
+            <button type="submit" style="padding:10px;background-color:orange">Shuffle</button>
+        </form>
+    }
+}
